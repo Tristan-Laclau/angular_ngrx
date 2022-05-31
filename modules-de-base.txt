@@ -37,3 +37,5 @@
 -> optimisation visuelles de base
 -> optimisation visuelles avancées (bootstrap)
 .
+.
+.
