@@ -1,0 +1,38 @@
+	------------------- Angular -------------------
+ 
+-> ng g :component : login / (Signup)
+-> routeur path modules
+-> reactive form
+-> user model
+-> bdd user info
+-> service
+
+	------------------- NGRX -------------------
+
+-> ngrx files	-> store
+		-> action
+		-> reducer
+		-> states
+		-> effects
+-> dans component login	-> dispatch action 
+			-> effect (success / error)
+			-> success  -> action
+				    -> reducer (state)
+				    -> localstorage (? effect ?)
+			-> error    -> action
+				    -> reducer (state)
+				    -> localstorage (? effect ?)
+-> component logout	-> dispatch action 
+			-> effect (success / error)
+			-> success  -> action
+				    -> reducer (state)
+				    -> localstorage (? effect ?)
+			-> error    -> action
+				    -> reducer (state)
+				    -> localstorage (? effect ?)
+-> mise en place des acces + *ngIf (aircrafs + Alert)
+
+	------------------- Optionnel ------------------- 
+
+-> optimisation visuelles de base
+-> optimisation visuelles avancées (bootstrap)
