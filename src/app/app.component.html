@@ -1,20 +1,59 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
+<div *ngIf="isLogged ; else mainNavMenu" class="bg-airbus">
+  <div class="row">
+  <div class="col-6 m-4">
+    <img
+      alt="Opt alp thumbnail"
+      style="height: 25px"
+      src="assets/img/Airbus.png"
+      href="#"
+    />
+  </div>
+  </div>
+</div>
 
-  <a class="navbar-brand" href="#">AIRBUS</a>
 
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/aircrafts">Aircrafts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/aircrafts-alert">Alert</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Se Conecter</a>
-    </li>
-  </ul>
-</nav>
+
+
+
+<!-- <nav class="navbar navbar-expand-sm bg-airbus">
+    <div class="bg-airbus">
+      <div class="row">
+      <div class="m-1 col-6">
+        <img
+          alt="Opt alp thumbnail"
+          style="height: 25px"
+          src="assets/img/Airbus.png"
+          href="#"
+        />
+      </div>
+        <div class="col-5 text-white">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/aircrafts">Aircrafts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/aircrafts-alert">Alert</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </nav> -->
+
+<!-- *** fin navbar test*** -->
+<div *ngIf="!isLogged ; else mainMenu"><app-login></app-login></div>
 
 
 <router-outlet> </router-outlet>
 
+<div class="navbar fixed-bottom navbar-expand-sm bg-airbus">
+  <div class="col-12 text-white text-center p-3" (click)="switchLogin()">© 2020 Copyright : [ Hugo H., Jean Charles D., Tristan L., Martial . ]</div>
+</div>
+
+
+
+<ng-template #mainMenu><app-aircrafts></app-aircrafts></ng-template>
+<ng-template #mainNavMenu><app-navbar></app-navbar></ng-template>
