@@ -1,27 +1,32 @@
-<section style="height:600px" >
+<section style="height:600px">
   <div class="container p-4">
     <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid"
-          alt="Phone image">
-      </div>
+
 
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <h1 class="loginH1">Connection</h1>
+        <h1 class="loginH1">Inscription</h1>
         <form [formGroup]="userForm" (ngSubmit)="onLogin(userForm)">
           <!-- Email input -->
           <div class="form-outline mb-4">
+            <label class="form-label">Email </label>
             <input type="text" class="form-control form-control-lg" placeholder="Login"
               formControlName="login" required="" />
-            <label class="form-label">Email </label>
+
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-4">
+            <label class="form-label">Saisir un mot de passe</label>
             <input type="password" class="form-control form-control-lg" name="password" placeholder="Password"
               formControlName="password" required="" />
-            <label class="form-label">Mot de passe</label>
           </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label">Ressaisissez votre mot de passe</label>
+                      <input type="password" class="form-control form-control-lg" name="password" placeholder="Password"
+                        formControlName="password" required="" />
+                    </div>
 
           <!-- Submit button -->
           <button type="submit" [disabled]="!userForm.valid" class="btn btn-lg btn-block " id="submitBtn">
@@ -50,6 +55,10 @@
             </div>
           </div>
         </form>
+      </div>
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+          alt="Phone image">
       </div>
     </div>
   </div>

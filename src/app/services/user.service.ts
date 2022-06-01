@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
-import { UsersActions } from '../ngrx/users.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +11,16 @@ export class UserService {
 user : User | undefined;
 users : User[] | undefined;
 loginSuccess : boolean = false;
+// connectedUser : User = new User();
 
   constructor(private http:HttpClient) { }
 
-  
+
   public getUsers(): Observable<User[]> {
     // let host = Math.random() > 0.1 ? environment.host : environment.unreachableHost;
 
     return this.http.get<User[]>(environment.host + "/users");
-    //précisons dans la méthode get que nous attendons une liste d'utilisateurs     
+    //précisons dans la méthode get que nous attendons une liste d'utilisateurs
   }
 
   registerUser(){}
@@ -50,12 +50,30 @@ loginSuccess : boolean = false;
     }
   }
 
+  // public getTargetUser(keyword:string) : Observable<User[]> {
+  //   return this.http.get<User[]>(environment.host + "/login?login_like=" + keyword)
+  // }
+
+  checkConnected() {
+    return localStorage.getItem('user') != null;
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+  }
+
+  getUser() : User{
+    let user = localStorage.getItem(' user');
+    if(user)  return  JSON.parse(user);
+    return {id : 0,login : "",password : "",isAdmin : false};
+  }
+
   getLoginSuccess(){
     return this.loginSuccess;
   }
 
   userLogOut(){}
 
-  
+
 
 }
