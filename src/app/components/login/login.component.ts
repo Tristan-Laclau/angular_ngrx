@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user.model';
 
 @Component({
     selector: 'app-login',
@@ -7,22 +8,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 
 export class LoginComponent implements OnInit {
+  userForm! : FormGroup;
+  user : User ;
+  display = false;
+  problemLogin = false;
 
-    ngForm: FormGroup
-    data = {
-        email: "",
-        password: ""
-    }
-    display = false
-    problemLogin = false
-
-
-    constructor() {
-        this.ngForm = new FormGroup({
-            email: new FormControl(this.data.email),
-            password: new FormControl(this.data.password)
-        })
-    }
+    constructor(formBuilder:FormBuilder) {
+      this.user = {id:99,login:"test@test.com",password:"test",isAdmin:false};                           // A modifier ou retirer
+      this.userForm = formBuilder.group({
+        login : [this.user.login, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
+        password : [this.user.password, Validators.required]
+      })
+     }
 
     ngOnInit() {
 
@@ -31,10 +28,10 @@ export class LoginComponent implements OnInit {
     onLogin(form: FormGroup): void {
         console.log(form.value);
         if (form.valid) {
-            this.data.email = form.value.email
-            this.data.password = form.value.password
+            this.user.login = form.value.login
+            this.user.password = form.value.password
 
-            console.log(this.data)
+            console.log(this.user)
             document.getElementById('submitBtn')?.classList.toggle("is_active")
 
 
