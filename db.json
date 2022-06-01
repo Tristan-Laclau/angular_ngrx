@@ -5,6 +5,13 @@
       {"id": 3,"prog": "A380","design": true,"development": true},
       {"id": 4,"prog": "A400M","design": false,"development": false},
       {"id": 5,"prog": "A330","design": true,"development": true}
+    ],
+
+    "user": [
+      {"id": 1,"login": "Martial", "password": "1234", "isAdmin":false },
+      {"id": 2,"login": "Jean-Charles", "password": "1243", "isAdmin":false },
+      {"id": 3,"login": "Tristan", "password": "2134", "isAdmin":false },
+      {"id": 1,"login": "Hugo", "password": "4321", "isAdmin":true }
     ]
   }
   
