@@ -15,8 +15,8 @@ export class UsersEffects {
             ofType(UsersActionsTypes.GET_ALL_USERS),  //si l'action est de type GET_ALL_Users alors étape suivante : mergeMap
             mergeMap((action: UsersActions) => {    //mergeMap permet ici de renvoyer un Observable par action
                 return this.userService.getUsers().pipe(  //attente réception des données en base (liste des avions)
-                    map((Users) => new GetAllUsersActionSuccess(Users)), //si reçu, alors on retourne un Observable<Action>
-                    //dont le payload est la liste des avions
+                    map((users) => new GetAllUsersActionSuccess(users)), //si reçu, alors on retourne un Observable<Action>
+                    //dont le payload est la liste des utilisateurs
                     //l'action une fois émise va être traité par le Reducer
                     //case UsersActionsTypes.GET_ALL_Users_SUCCESS:
                     catchError((err) => of(new GetAllUsersActionError(err.message)))     //s'il y a erreur, génération d'une autre action

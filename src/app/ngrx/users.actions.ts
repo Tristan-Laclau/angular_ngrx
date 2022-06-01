@@ -4,7 +4,7 @@ import { User } from "../model/user.model";
 export enum UsersActionsTypes{
     //Action : Get all USERS 
     //s'agissant de l'action consistant à afficher tous les avions, nous avons 3 états possible
-    GET_ALL_USERS = "[Users] Get All USERS",                //demande tous les avions
+    GET_ALL_USERS = "[Users] Get All USERS",                //demande tous les utilisateurs
     GET_ALL_USERS_SUCCESS = "[Users] Get All USERS Success",//demande ok
     GET_ALL_USERS_ERROR = "[Users] Get All USERS Error",    //demande nok
  

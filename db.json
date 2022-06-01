@@ -7,7 +7,7 @@
     {"id": 5,"prog": "A330","design": true,"development": true,"imgUrl": "assets/img/A330.jpg"}
   ],
 
-  "user": [
+  "users": [
     {"id": 1,"login": "Martial", "password": "1234", "isAdmin":false },
     {"id": 2,"login": "Jean-Charles", "password": "1243", "isAdmin":false },
     {"id": 3,"login": "Tristan", "password": "2134", "isAdmin":false },
