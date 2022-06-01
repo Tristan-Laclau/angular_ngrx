@@ -1,32 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user.model';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: 'login.component.html'
 })
+
 export class LoginComponent implements OnInit {
-userForm! : FormGroup;
-user : User ;
+  userForm! : FormGroup;
+  user : User ;
+  display = false;
+  problemLogin = false;
 
-  constructor(formBuilder:FormBuilder) { 
-    this.user = {id:0,login:"",password:"",isAdmin:false};                           // A modifier
-    this.userForm = formBuilder.group({
-      login : [this.user.login, Validators.required],
-      password : [this.user.password, Validators.required]
-    })
-   }
+    constructor(formBuilder:FormBuilder) {
+      this.user = {id:99,login:"test@test.com",password:"test",isAdmin:false};                           // A modifier ou retirer
+      this.userForm = formBuilder.group({
+        login : [this.user.login, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
+        password : [this.user.password, Validators.required]
+      })
+     }
+
+    ngOnInit() {
+
+    }
+
+    onLogin(form: FormGroup): void {
+        console.log(form.value);
+        if (form.valid) {
+            this.user.login = form.value.login
+            this.user.password = form.value.password
+
+            console.log(this.user)
+            document.getElementById('submitBtn')?.classList.toggle("is_active")
 
 
+        }
+        setTimeout(() => {
+            document.getElementById('submitBtn')?.classList.toggle("is_active")
+        }, 1500);
+    }
 
-  ngOnInit(): void {
-  }
-
-  onLogin(userForm:FormGroup) {
-    console.log(userForm);
-    console.log("***************************");
-  }
 
 }

@@ -13,7 +13,6 @@ import { AircraftsEffects } from './ngrx/aircrafts.effects';
 import { AircraftsReducer } from './ngrx/aircrafts.reducer';
 import { AircraftsAlertComponent } from './components/aircrafts-alert/aircrafts-alert.component';
 import { LoginComponent } from './components/login/login.component';
-
 @NgModule({
   declarations: [
     AppComponent,

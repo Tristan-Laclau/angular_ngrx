@@ -1,17 +1,16 @@
 {
-    "aircrafts": [
-      {"id": 1,"prog": "A350","design": true,"development": false},
-      {"id": 2,"prog": "A320","design": false,"development": true},
-      {"id": 3,"prog": "A380","design": true,"development": true},
-      {"id": 4,"prog": "A400M","design": false,"development": false},
-      {"id": 5,"prog": "A330","design": true,"development": true}
-    ],
+  "aircrafts": [
+    {"id": 1,"prog": "A350","design": true,"development": false,"imgUrl":"assets/img/A350.jpg"},
+    {"id": 2,"prog": "A320","design": false,"development": true,"imgUrl": "assets/img/A320.jpg"},
+    {"id": 3,"prog": "A380","design": true,"development": true,"imgUrl": "assets/img/A380.jpg"},
+    {"id": 4,"prog": "A400M","design": false,"development": false,"imgUrl": "assets/img/A400M.jpg"},
+    {"id": 5,"prog": "A330","design": true,"development": true,"imgUrl": "assets/img/A330.jpg"}
+  ],
 
-    "user": [
-      {"id": 1,"login": "Martial", "password": "1234", "isAdmin":false },
-      {"id": 2,"login": "Jean-Charles", "password": "1243", "isAdmin":false },
-      {"id": 3,"login": "Tristan", "password": "2134", "isAdmin":false },
-      {"id": 1,"login": "Hugo", "password": "4321", "isAdmin":true }
-    ]
-  }
-  
+  "user": [
+    {"id": 1,"login": "Martial", "password": "1234", "isAdmin":false },
+    {"id": 2,"login": "Jean-Charles", "password": "1243", "isAdmin":false },
+    {"id": 3,"login": "Tristan", "password": "2134", "isAdmin":false },
+    {"id": 1,"login": "Hugo", "password": "4321", "isAdmin":true }
+  ]
+}
