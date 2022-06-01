@@ -35,15 +35,16 @@
               </svg>
             </div>
           </button>
+          <div *ngIf="display" class=" alert alert-success col-md-12">
+            Utilisateur connecté.
+          </div>
+        
+          <div *ngIf="problemLogin" class=" alert alert-danger col-md-12">
+            Vérifiez vos identifiants ou créez un compte.
+          </div>
         </form>
       </div>
     </div>
   </div>
-  <div *ngIf="display" class=" alert alert-success col-md-12">
-    Utilisateur connecté.
-  </div>
 
-  <div *ngIf="problemLogin" class=" alert alert-danger col-md-12">
-    Vérifiez vos identifiants ou créez un compte.
-  </div>
 </section>

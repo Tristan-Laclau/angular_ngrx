@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.getAllUser()
-    this.userService.getUsers().subscribe({
+
+    // this.userService.getUsers().subscribe({
+    //   next:(data)=>console.log(data)
+    // })
+
+    this.userService.searchUser("Hugo@mail.com").subscribe({
       next:(data)=>console.log(data)
     })
 
@@ -44,18 +49,28 @@ export class LoginComponent implements OnInit {
   onLogin(form: FormGroup): void {
     this.store.dispatch(new GetAllUsersAction({}))
 
-    console.log(form.value);
+    //console.log(form.value);
     if (form.valid) {
       this.user.login = form.value.login
       this.user.password = form.value.password
 
-      console.log(this.user)
+      this.userService.userLogIn({login : form.value.login, password :form.value.password});
+
+      if (this.userService.getLoginSuccess()){
+        this.display=true;
+      }else{
+        this.problemLogin=true
+      }
+
+      //console.log(this.user)
       document.getElementById('submitBtn')?.classList.toggle("is_active")
 
 
     }
     setTimeout(() => {
       document.getElementById('submitBtn')?.classList.toggle("is_active")
+      this.display=false;
+      this.problemLogin=false;
     }, 1500);
   }
 
