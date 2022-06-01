@@ -4,4 +4,5 @@ export interface Aircraft {
   prog:string;
   design:boolean;
   development:boolean;
+  imgUrl:string;
 }
