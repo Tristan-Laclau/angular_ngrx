@@ -5,8 +5,9 @@ import { UserService } from 'src/app/services/user.service';
 import { Store } from '@ngrx/store';
 import { UsersState, UsersStateEnum } from 'src/app/ngrx/users.state';
 import { map, Observable } from 'rxjs';
-import { GetAllUsersAction } from 'src/app/ngrx/users.actions';
+import { GetAllUsersAction, GetTargetUserAction } from 'src/app/ngrx/users.actions';
 import { Router } from '@angular/router';
+import { __values } from 'tslib';
 // import { GetAllUsersAction, GetTargetUserAction } from 'src/app/ngrx/users.actions';
 
 @Component({
@@ -21,45 +22,49 @@ export class LoginComponent implements OnInit {
 
   userForm!: FormGroup;
   user: User;
-  loginControl : String = "none"
+  loginControl: String = "none"
   readonly usersStateEnum = UsersStateEnum
   usersState$: Observable<UsersState> | null = null
 
-  constructor(formBuilder: FormBuilder, private store: Store<any>, private userService: UserService, private router : Router) {
-    this.user = { id: 99, login: "test@test.com", password: "test", isAdmin: false };                           // A modifier ou retirer
+
+  constructor(formBuilder: FormBuilder, private store: Store<any>) {
+
+    this.user = { id: 99, login: "test@test.com", password: "test", isAdmin: false };
+
+    // A modifier ou retirer
     this.userForm = formBuilder.group({
       login: [this.user.login, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
       password: [this.user.password, Validators.required]
     })
+    this.usersState$ = this.store.pipe(map(state => state))
+    this.usersState$?.subscribe((__values) => { console.log("value" + __values.dataState) })
+
   }
 
   ngOnInit() {
-    //this.getAllUser()
-
+    this.test()
   }
-  getAllUser() {
-    this.usersState$ = this.store.pipe(
-      map((state) => state.UsersState)
-    )
+  test() {
+    this.usersState$?.subscribe((__values) => { console.log("value" + __values.dataState) })
   }
   onLogin(form: FormGroup): void {
-    this.store.dispatch(new GetAllUsersAction({}))
 
     //console.log(form.value);
     if (form.valid) {
-       this.user.login = form.value.login
-       this.user.password = form.value.password
+      this.store.dispatch(new GetTargetUserAction(form.value.login))
 
-      this.userService.userLogIn({ login: form.value.login, password: form.value.password });
+      //this.userService.userLogIn({ login: form.value.login, password: form.value.password });
+
       document.getElementById('submitBtn')?.classList.toggle("is_active")
 
-      if (this.userService.getLoginSuccess()!=null){
-        this.loginControl="success";
-      }else{
-        this.loginControl="error";
+       this.test()
+
+      if (this.user.password === form.value.password) {
+        this.loginControl = "success";
+      } else {
+        this.loginControl = "error";
       }
-      //console.log(this.user)
-      
+
     }
 
     setTimeout(() => {
@@ -67,9 +72,5 @@ export class LoginComponent implements OnInit {
       this.loginControl = "none";
     }, 1500);
   }
-
-  // onLogin2(form: FormGroup): void{
-  //   this.store.dispatch(new GetTargetUserAction(form.value.login, form.value.password));
-  // }
 
 }

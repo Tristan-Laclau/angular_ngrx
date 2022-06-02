@@ -4,7 +4,8 @@ export enum UsersStateEnum{  // les différents états du state
     LOADING = "Connecting",    //chargement en cours
     LOADED = "Connected",      //connecté
     ERROR = "Error",        //erreur
-    INITIAL = "Initial"     //état initial
+    INITIAL = "Initial",
+    DELETE  ="Delete"     //état initial
 }
 export interface UsersState {    //structure de notre STATE
     users : User[],          //liste d'utilisateurs qui s'affichent
@@ -13,7 +14,8 @@ export interface UsersState {    //structure de notre STATE
 }
 //il est nécessaire de définir l'état initial du state avec des valeurs par défaut
 export const initState : UsersState = {
-    users : [],
-    errorMessage:"",
-    dataState : UsersStateEnum.INITIAL
+    users: [],
+    errorMessage: "",
+    dataState: UsersStateEnum.INITIAL,
+   
 }

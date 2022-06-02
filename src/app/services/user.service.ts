@@ -32,35 +32,35 @@ loginSuccess : boolean = false;
   }
 
 
-  userLogIn(data: any) {
-    console.log('data',data)
-    if(this.searchUser(data.login)){
-      this.searchUser(data.login).subscribe(rep => {
-        console.log(rep)
-        if(rep[0].password === data.password && rep[0].login === data.login){
-            console.log("Vous êtes connectés")
-            localStorage.setItem('user',JSON.stringify({login : rep[0].login , isAdmin : rep[0].isAdmin}))
-          this.loginSuccess = true;
-          // this.router.navigateByUrl('/')
-        }else{
-          console.log("Echec de connexion")
-          this.loginSuccess=false;
-        }
-      })
-    }
-  }
-
-  // public getTargetUser(keyword:string) : Observable<User[]> {
-  //   return this.http.get<User[]>(environment.host + "/login?login_like=" + keyword)
+  // public getTargetUser(data: any) {
+  //   console.log('data',data)
+  //   if(this.searchUser(data.login)){
+  //     this.searchUser(data.login).subscribe(rep => {
+  //       console.log(rep)
+  //       if(rep[0].password === data.password && rep[0].login === data.login){
+  //           console.log("Vous êtes connectés")
+  //           localStorage.setItem('user',JSON.stringify({login : rep[0].login , isAdmin : rep[0].isAdmin}))
+  //         this.loginSuccess = true;
+  //         // this.router.navigateByUrl('/')
+  //       }else{
+  //         console.log("Echec de connexion")
+  //         this.loginSuccess=false;
+  //       }
+  //     })
+  //   }
   // }
 
-  checkConnected() {
-    return localStorage.getItem('user') != null;
+   public getTargetUser(keyword:string) : Observable<User[]> {
+    return this.http.get<User[]>(environment.host + "/users?login_like=" + keyword)
   }
 
-  logout() {
-    localStorage.removeItem('user');
-  }
+  // checkConnected() {
+  //   return localStorage.getItem('user') != null;
+  // }
+
+  // logout() {
+  //   localStorage.removeItem('user');
+  // }
 
   // getUser() : User{
   //   let user = localStorage.getItem(' user');
@@ -68,7 +68,7 @@ loginSuccess : boolean = false;
   //   return {id : 0,login : "",password : "",isAdmin : false};
   // }
 
-  getLoginSuccess(){
-    return this.loginSuccess;
-  }
+  // getLoginSuccess(){
+  //   return this.loginSuccess;
+  // }
 }

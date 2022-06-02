@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { catchError, map, mergeMap, Observable, of } from "rxjs";
 import { UserService } from "../services/user.service";
-import { UsersActions, UsersActionsTypes, GetAllUsersActionError, GetAllUsersActionSuccess} from "./users.actions";
-// import { UsersActions, UsersActionsTypes, GetAllUsersActionError, GetAllUsersActionSuccess, GetTargetUserActionSuccess, GetTargetUserActionError} from "./users.actions";
+//import { UsersActions, UsersActionsTypes, GetAllUsersActionError, GetAllUsersActionSuccess} from "./users.actions";
+ import { UsersActions, UsersActionsTypes, GetAllUsersActionError, GetAllUsersActionSuccess, GetTargetUserActionSuccess, GetTargetUserActionError} from "./users.actions";
 
 
 @Injectable()  //décorateur spéficie qu'il s'agit d'un service
@@ -27,15 +27,15 @@ export class UsersEffects {
         )
     );
 
-  //   searchAircraftsEffect: Observable<UsersActions> = createEffect(
-  //     () => this.effectActions.pipe(
-  //         ofType(UsersActionsTypes.GET_TARGET_USER),
-  //         mergeMap((action: UsersActions) => {
-  //             return this.userService.getTargetUser(action.payload).pipe(
-  //                 map((users) => new GetTargetUserActionSuccess(users)),
-  //                 catchError((err) => of(new GetTargetUserActionError(err.message)))
-  //             )
-  //         })
-  //     )
-  // );
+    getTargetUserEffect: Observable<UsersActions> = createEffect(
+      () => this.effectActions.pipe(
+          ofType(UsersActionsTypes.GET_TARGET_USER),
+          mergeMap((action: UsersActions) => {
+              return this.userService.getTargetUser(action.payload).pipe(
+                  map((users) => new GetTargetUserActionSuccess(users)),
+                  catchError((err) => of(new GetTargetUserActionError(err.message)))
+              )
+          })
+      )
+  );
 }

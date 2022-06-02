@@ -1,5 +1,6 @@
 export enum UsersActionsTypes {
     GET_ALL_USERS = "[Users] Get All Users",
+    GET_TARGET_USER = "[Users] Get Target User",
 
 }
 
