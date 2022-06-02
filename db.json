@@ -8,10 +8,10 @@
   ],
 
   "users": [
-    {"id": 1,"login": "Martial", "password": "1234", "isAdmin":false },
-    {"id": 2,"login": "Jean-Charles", "password": "1243", "isAdmin":false },
-    {"id": 3,"login": "Tristan", "password": "2134", "isAdmin":false },
-    {"id": 1,"login": "Hugo@mail.com", "password": "4321", "isAdmin":true }
+    {"id": 1,"login": "md@fms.com", "password": "martial", "isAdmin":false },
+    {"id": 2,"login": "jcl@fms.com", "password": "jean", "isAdmin":false },
+    {"id": 3,"login": "tl@fms.com", "password": "tristan", "isAdmin":false },
+    {"id": 1,"login": "hh@fms.com", "password": "hugo", "isAdmin":true }
   ]
 }
 

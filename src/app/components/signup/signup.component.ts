@@ -1,22 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user.model';
-import { UserService } from 'src/app/services/user.service';
-import { Store } from '@ngrx/store';
-import { UsersState, UsersStateEnum } from 'src/app/ngrx/users.state';
-import { map, Observable } from 'rxjs';
-import { GetAllUsersAction } from 'src/app/ngrx/users.actions';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { GetAllUsersAction, GetTargetUserAction } from 'src/app/ngrx/users.actions';
+import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
+import { User } from 'src/app/model/user.model';
+import { GetAllUsersAction } from 'src/app/ngrx/users.actions';
+import { UsersState, UsersStateEnum } from 'src/app/ngrx/users.state';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: 'login.component.html'
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-
-
-
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   @Input() ngSwitchCase: any;
 
   userForm!: FormGroup;
@@ -34,7 +31,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getAllUser()
+
+    this.getAllUser()
+
+    this.userService.getUsers().subscribe({
+      next:(data)=>console.log(data)
+    })
+
+    // this.userService.searchUser("Hugo@mail.com").subscribe({
+    //   next:(data)=>console.log(data)
+    // })
 
   }
   getAllUser() {
@@ -47,19 +53,17 @@ export class LoginComponent implements OnInit {
 
     //console.log(form.value);
     if (form.valid) {
-       this.user.login = form.value.login
-       this.user.password = form.value.password
+      this.user.login = form.value.login
+      this.user.password = form.value.password
 
-      this.userService.userLogIn({ login: form.value.login, password: form.value.password });
-      document.getElementById('submitBtn')?.classList.toggle("is_active")
-
-      if (this.userService.getLoginSuccess()!=null){
+      this.userService.userLogIn({login : form.value.login, password :form.value.password});
+      if (this.userService.getLoginSuccess()){
         this.loginControl="success";
       }else{
         this.loginControl="error";
       }
       //console.log(this.user)
-      
+      document.getElementById('submitBtn')?.classList.toggle("is_active")
     }
 
     setTimeout(() => {

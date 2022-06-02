@@ -1,20 +1,51 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
+<div *ngIf="!isConnected; else mainNavMenu" class="bg-airbus">
+  <div class="row">
+    <div class="col-6 m-4">
+      <img alt="Airbus Logo" style="height: 25px" src="assets/img/Airbus-logo1.png" href="#" />
+    </div>
+  </div>
+</div>
 
-  <a class="navbar-brand" href="#">AIRBUS</a>
+<div *ngIf="!isConnected; else mainMenu">
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="card">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" href="#login">Connection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#signup">Inscription</a>
+        </li>
+      </ul>
+      <div class="card">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="pills-home-tab">
+            <app-login></app-login>
+          </div>
+          <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <app-signup></app-signup>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/aircrafts">Aircrafts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/aircrafts-alert">Alert</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Se Conecter</a>
-    </li>
-  </ul>
-</nav>
+
+</div>
 
 
 <router-outlet> </router-outlet>
 
+
+<div class="navbar fixed-bottom navbar-expand-sm bg-airbus">
+  <div class="col-12 text-white text-center p-1">
+    © 2022 Copyright : [ Hugo H., Jean Charles D., Tristan L., Martial . ]
+  </div>
+</div>
+
+<ng-template #mainMenu>
+  <app-aircrafts></app-aircrafts>
+</ng-template>
+<ng-template #mainNavMenu>
+  <app-navbar></app-navbar>
+</ng-template>

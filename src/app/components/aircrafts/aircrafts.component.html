@@ -1,5 +1,5 @@
-<div>
-  <app-aircrafts-navbar></app-aircrafts-navbar>
+<app-aircrafts-navbar></app-aircrafts-navbar>
+<div class="container">
   <ng-container *ngIf="aircraftsState$ | async as state" [ngSwitch]="state.dataState">
     <ng-container *ngSwitchCase="aircraftsStateEnum.INITIAL">
       <div class="p-2"> Initial State</div>
@@ -42,10 +42,11 @@
       </div>
     </ng-container>
   </ng-container>
-</div>
 
-<div>
-  <ng-container *ngIf="countAlertAircfrats$ | async as countAircfrats">
-    <h6 class="text-danger"> total aircrafts under design & dev : {{countAircfrats}} </h6>
-  </ng-container>
+
+  <div>
+    <ng-container *ngIf="countAlertAircfrats$ | async as countAircfrats">
+      <h6 class="text-danger"> total aircrafts under design & dev : {{countAircfrats}} </h6>
+    </ng-container>
+  </div>
 </div>
