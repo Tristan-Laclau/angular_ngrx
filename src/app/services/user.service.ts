@@ -54,13 +54,13 @@ loginSuccess : boolean = false;
     return this.http.get<User[]>(environment.host + "/users?login_like=" + keyword)
   }
 
-  // checkConnected() {
-  //   return localStorage.getItem('user') != null;
-  // }
+  checkConnected() {
+    return localStorage.getItem('user');
+  }
 
-  // logout() {
-  //   localStorage.removeItem('user');
-  // }
+  logout() {
+    localStorage.removeItem('user');
+  }
 
   getUser() : User{
     let user = localStorage.getItem('user');
