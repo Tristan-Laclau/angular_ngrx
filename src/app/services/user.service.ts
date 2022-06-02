@@ -62,11 +62,11 @@ loginSuccess : boolean = false;
     localStorage.removeItem('user');
   }
 
-  // getUser() : User{
-  //   let user = localStorage.getItem(' user');
-  //   if(user)  return  JSON.parse(user);
-  //   return {id : 0,login : "",password : "",isAdmin : false};
-  // }
+  getUser() : User{
+    let user = localStorage.getItem('user');
+    if(user)  return  JSON.parse(user);
+    return {id : 0,login : "",password : "",isAdmin : false};
+  }
 
   getLoginSuccess(){
     return this.loginSuccess;
