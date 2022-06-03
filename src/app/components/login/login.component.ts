@@ -68,7 +68,8 @@ export class LoginComponent implements OnInit, DoCheck {
       setTimeout(() => {
         this.checkUser();
         if (this.user && this.user.password === form.value.password) {
-          console.log('Vous êtes connectés');
+          this.loginControl = 'success';
+          // console.log('Vous êtes connectés');
           localStorage.setItem(
             'user',
             JSON.stringify({
@@ -76,9 +77,9 @@ export class LoginComponent implements OnInit, DoCheck {
               isAdmin: this.user.isAdmin,
             })
           );
-          this.loginControl = 'success';
+          
         } else {
-          console.log('Echec de connexion');
+          // console.log('Echec de connexion');
           this.loginControl = 'error';
         }
       }, 2000);
