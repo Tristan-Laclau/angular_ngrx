@@ -58,7 +58,7 @@ export class Laboratory {
     data$.subscribe((value) => {
       console.info('2--' + value);
     });
-  F
+  
     //création d'un observable à partir d'un tableau de string
     const dataTable$ = from(['monday','tuesday','wednesday', 'thursday' , 'friday' , 'saturday' , 'sunday']);
     dataTable$.subscribe(val => console.log(val));  //soucription à celui-ci
