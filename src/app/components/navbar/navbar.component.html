@@ -1,7 +1,6 @@
 <div class="bg-airbus">
-  <div class="container">
     <div class="row">
-      <div class="m-4 col-5">
+      <div class="m-4 col-7">
         <img
           alt="Opt alp thumbnail"
           style="height: 25px"
@@ -9,15 +8,14 @@
           href="#"
         />
       </div>
-      <div class="col-5 my-4">
-        <a class="nav-link text-white">Bienvenue {{ user?.login }}</a>
+      <div class="col-3 my-2">
+        <h5 class="nav-link text-white ">Bienvenue {{ user?.login }}</h5>
         <a class="nav-link text-white"></a>
       </div>
-      <div class="col-1 my-4">
+      <div class="col-1 my-2 btn btn-outline-info">
         <a class="nav-link text-white" routerLink="/" (click)="onLogout()"
           >Logout</a
         >
-      </div>
     </div>
   </div>
 </div>
