@@ -13,25 +13,24 @@ export class AppComponent implements OnInit, DoCheck {
   title = 'airbus-app-ngrx';
   isConnected: boolean = false;
   navbarComponent!: NavbarComponent;
- 
-  constructor(public userService: UserService, private router: Router, private store: Store<any>) {
-   
-  }
+
+  constructor(
+    public userService: UserService,
+    private router: Router,
+    private store: Store<any>
+  ) {}
 
   ngOnInit(): void {
-   this.verifyuser() 
-   
+    this.verifyuser();
   }
   ngDoCheck(): void {
-    this.verifyuser() 
+    this.verifyuser();
   }
   verifyuser() {
     if (this.userService.checkConnected()) {
-      this.isConnected = true
+      this.isConnected = true;
     } else {
-      this.isConnected = false
+      this.isConnected = false;
     }
   }
-  
-
 }

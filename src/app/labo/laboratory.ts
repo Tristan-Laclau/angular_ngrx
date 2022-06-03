@@ -10,7 +10,7 @@ export class Laboratory {
     return x + y;
   }
 
-  //fonction anonyme 
+  //fonction anonyme
   //prend 2 arguments et renvoi l'addition, de type number, qui sera affiché sur la console
   sum = (x: number, y: number): number => { return x + y; }   //accolades non indispensable car une seule instruction
   display = () => console.log("hello world");   //prend pas d'argument et affiche hello
@@ -38,7 +38,7 @@ export class Laboratory {
     let tab2 = tab.map(function (s) { return s.length }); //sans les fonctions fléchées
     let tab3 = tab.map(s => s.length); // avec ... moins verbeux n'est-ce pas ? faut juste s'habituer
 
-    //Surcharge de fonction ... 
+    //Surcharge de fonction ...
 
     //Les Observables
     const data$ = new Observable(observer => { // on définit ici un observable (qui peut être observé)
@@ -58,7 +58,7 @@ export class Laboratory {
     data$.subscribe((value) => {
       console.info('2--' + value);
     });
-
+  F
     //création d'un observable à partir d'un tableau de string
     const dataTable$ = from(['monday','tuesday','wednesday', 'thursday' , 'friday' , 'saturday' , 'sunday']);
     dataTable$.subscribe(val => console.log(val));  //soucription à celui-ci
@@ -68,7 +68,7 @@ export class Laboratory {
     data$.pipe(
       tap(item => console.log('3---' +item)),     //1ère affichage + renvoi de la source
       map(dat => dat + ' end')                    //map : renvoi un observable avec chaque donnée transformée
-    ).subscribe(                   //soucription à celui-ci        
+    ).subscribe(                   //soucription à celui-ci
       dis => console.log('hi ' + dis)
     );
 

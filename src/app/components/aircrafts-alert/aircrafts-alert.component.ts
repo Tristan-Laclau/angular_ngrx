@@ -8,12 +8,11 @@ import { selectAlertAircrafts } from 'src/app/ngrx/aircrafts.selectors';
 @Component({
   selector: 'app-aircrafts-alert',
   templateUrl: './aircrafts-alert.component.html',
-  styleUrls: ['./aircrafts-alert.component.css']
+  styleUrls: ['./aircrafts-alert.component.css'],
 })
 export class AircraftsAlertComponent implements OnInit {
-
   alertAircfrats$: Observable<Aircraft[]> | null = null;
-  labo : Laboratory = new Laboratory();
+  labo: Laboratory = new Laboratory();
 
   constructor(private store: Store<any>) {
     this.alertAircfrats$ = store.select(selectAlertAircrafts);

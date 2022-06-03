@@ -1,32 +1,31 @@
 <div>
-    <ng-container *ngIf="alertAircfrats$ | async as aircrafts">           
-                  <div class="container">
-
-                    <div class="d-flex flex-wrap text-danger">
-                      <div *ngFor="let aircraft of aircrafts">
-                        <div class="carBody-danger">
-                          <div class="card card-small">
-                            <div class="thumbnail">
-                              <img alt="Opt alp thumbnail" src="{{aircraft.imgUrl}}">
-                              <a href="#/product/awesome-landing-page">
-                                <div class="thumb-cover"></div>
-                              </a>
-                              <div class="details">
-                                <div class="user">
-                                  <div class="name">ID : {{aircraft.id}}</div>
-                                </div>
-                                <div class="clearfix"></div>
-                              </div>
-                            </div>
-                            <div class="card-info">
-                              <h3>{{aircraft.prog}}</h3>
-                              <p>Design : {{aircraft.design}}</p>
-                              <p>Development : {{aircraft.development}}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+  <ng-container *ngIf="alertAircfrats$ | async as aircrafts">
+    <div class="container">
+      <div class="d-flex flex-wrap text-danger">
+        <div *ngFor="let aircraft of aircrafts">
+          <div class="carBody-danger">
+            <div class="card card-small">
+              <div class="thumbnail">
+                <img alt="Opt alp thumbnail" src="{{ aircraft.imgUrl }}" />
+                <a href="#/product/awesome-landing-page">
+                  <div class="thumb-cover"></div>
+                </a>
+                <div class="details">
+                  <div class="user">
+                    <div class="name">ID : {{ aircraft.id }}</div>
                   </div>
-    </ng-container>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="card-info">
+                <h3>{{ aircraft.prog }}</h3>
+                <p>Design : {{ aircraft.design }}</p>
+                <p>Development : {{ aircraft.development }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

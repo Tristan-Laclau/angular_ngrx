@@ -1,14 +1,23 @@
 <div class="bg-airbus">
   <div class="container">
-  <div class="row">
-    <div class="m-4 col-5">
-      <img alt="Opt alp thumbnail" style="height: 25px" src="assets/img/Airbus-logo1.png" href="#" />
+    <div class="row">
+      <div class="m-4 col-5">
+        <img
+          alt="Opt alp thumbnail"
+          style="height: 25px"
+          src="assets/img/Airbus-logo1.png"
+          href="#"
+        />
+      </div>
+      <div class="col-5 my-4">
+        <a class="nav-link text-white">Bienvenue {{ user?.login }}</a>
+        <a class="nav-link text-white"></a>
+      </div>
+      <div class="col-1 my-4">
+        <a class="nav-link text-white" routerLink="/login" (click)="onLogout()"
+          >Logout</a
+        >
+      </div>
     </div>
-    <div class="col-5 my-4">
-      <a class="nav-link text-white">Bienvenue {{user?.login}}</a> <a class="nav-link text-white"></a> </div>
-    <div class="col-1 my-4">
-      <a class="nav-link text-white" routerLink="/login" (click)="onLogout()">Logout</a> </div>
-
   </div>
-</div>
 </div>

@@ -25,7 +25,7 @@ import { SignupComponent } from './components/signup/signup.component';
     AircraftsAlertComponent,
     LoginComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,12 +33,15 @@ import { SignupComponent } from './components/signup/signup.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ airbusState: AircraftsReducer, usersState: UsersReducer}),   //spécifier le reducer
-    EffectsModule.forRoot([AircraftsEffects,UsersEffects]),               //spécifier les effects
-    StoreDevtoolsModule.instrument()  //en l'activant ici, à chaque action de NgRx dans l'appli
-                                      //le plugin redux (chrome) permet l'analyse du state durant le dev
+    StoreModule.forRoot({
+      airbusState: AircraftsReducer,
+      usersState: UsersReducer,
+    }), //spécifier le reducer
+    EffectsModule.forRoot([AircraftsEffects, UsersEffects]), //spécifier les effects
+    StoreDevtoolsModule.instrument(), //en l'activant ici, à chaque action de NgRx dans l'appli
+    //le plugin redux (chrome) permet l'analyse du state durant le dev
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

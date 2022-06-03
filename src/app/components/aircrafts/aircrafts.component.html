@@ -1,39 +1,41 @@
 <app-aircrafts-navbar></app-aircrafts-navbar>
 <div class="container">
-  <ng-container *ngIf="aircraftsState$ | async as state" [ngSwitch]="state.dataState">
+  <ng-container
+    *ngIf="aircraftsState$ | async as state"
+    [ngSwitch]="state.dataState"
+  >
     <ng-container *ngSwitchCase="aircraftsStateEnum.INITIAL">
-      <div class="p-2"> Initial State</div>
+      <div class="p-2">Initial State</div>
     </ng-container>
     <ng-container *ngSwitchCase="aircraftsStateEnum.LOADING">
-      <div class="p-2"> Loading</div>
+      <div class="p-2">Loading</div>
     </ng-container>
     <ng-container *ngSwitchCase="aircraftsStateEnum.ERROR">
-      <div class="p-2 text-danger"> {{state.errorMessage}}</div>
+      <div class="p-2 text-danger">{{ state.errorMessage }}</div>
     </ng-container>
 
     <ng-container *ngSwitchCase="aircraftsStateEnum.LOADED">
       <div class="container">
-
-        <div class="d-flex flex-wrap ">
+        <div class="d-flex flex-wrap">
           <div *ngFor="let aircraft of state.aircrafts">
             <div class="carBody">
               <div class="card card-small">
                 <div class="thumbnail">
-                  <img alt="Opt alp thumbnail" src="{{aircraft.imgUrl}}">
+                  <img alt="Opt alp thumbnail" src="{{ aircraft.imgUrl }}" />
                   <a href="#/product/awesome-landing-page">
                     <div class="thumb-cover"></div>
                   </a>
                   <div class="details">
                     <div class="user">
-                      <div class="name">ID : {{aircraft.id}}</div>
+                      <div class="name">ID : {{ aircraft.id }}</div>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                 </div>
                 <div class="card-info">
-                  <h3>{{aircraft.prog}}</h3>
-                  <p>Design : {{aircraft.design}}</p>
-                  <p>Development : {{aircraft.development}}</p>
+                  <h3>{{ aircraft.prog }}</h3>
+                  <p>Design : {{ aircraft.design }}</p>
+                  <p>Development : {{ aircraft.development }}</p>
                 </div>
               </div>
             </div>
@@ -43,10 +45,11 @@
     </ng-container>
   </ng-container>
 
-
   <div>
     <ng-container *ngIf="countAlertAircfrats$ | async as countAircfrats">
-      <h6 class="text-danger"> total aircrafts under design & dev : {{countAircfrats}} </h6>
+      <h6 class="text-danger">
+        total aircrafts under design & dev : {{ countAircfrats }}
+      </h6>
     </ng-container>
   </div>
 </div>
